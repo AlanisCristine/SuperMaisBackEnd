@@ -4,6 +4,7 @@ using SuperMaisAPI.InterfacesRepositories;
 using SuperMaisAPI.Models;
 
 using Service.Interfaces;
+using System.Data.Common;
 
 namespace Service.Services;
 
@@ -21,9 +22,9 @@ public class FuncionariosService : IFuncionariosService
     public async Task Post(CreateFuncionariosDTO funcionarioDTO)
     {
         var funcionario = _mapper.Map<Funcionarios>(funcionarioDTO);
-
         await _funcionariosRepository.Post(funcionario);
     }
+
 
     public async Task<List<Funcionarios>> Get()
     {
@@ -34,6 +35,9 @@ public class FuncionariosService : IFuncionariosService
     {
         return await _funcionariosRepository.GetById(id);
     }
+
+   
+
 
     public async Task Put(Funcionarios funcionario)
     {
